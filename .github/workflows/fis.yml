@@ -1,7 +1,7 @@
 name: fis
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "0 */3 * * *"
   workflow_dispatch:
 
 # Use workflow-specific concurrency group to prevent cancellation
