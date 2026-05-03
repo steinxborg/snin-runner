@@ -56,10 +56,10 @@ jobs:
             git reset --hard origin/$DEFAULT_BRANCH
             
             # Re-run the script to generate fresh data
-            python $SCRIPT_NAME
+            python sky.py --mac mac_sh_15313 --filename sky-formula-1-events.json
             
             # Stage the new changes
-            git add sky*.json
+            git add sky-*.json
             
             # Check if there are changes after reset
             if git diff --cached --quiet; then
