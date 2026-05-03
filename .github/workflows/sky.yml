@@ -57,6 +57,19 @@ jobs:
             
             # Re-run the script to generate fresh data
             python sky.py --mac mac_sh_15313 --filename sky-formula-1-events.json
+            python sky.py --mac mac_sh_104263 --filename sky-formula-e-events.json
+            python sky.py --mac mac_sh_16167 --filename sky-indycar-events.json
+            python sky.py --mac mac_sh_16047 --filename sky-premier-league-events.json
+            python sky.py --mac mac_sh_16244 --filename sky-ipl.json
+            python sky.py --mac mac_sh_15315 --filename sky-afl.json
+            python sky.py --mac mac_sh_15806 --filename sky-pga.json
+            python sky.py --mac mac_sh_76070 --filename sky-pfl.json
+            python sky.py --mac mac_sh_16604 --filename sky-pl-darts.json
+            python sky.py --mac mac_sh_16948 --filename sky-world-snooker-tour.json
+
+            python sky.py --mac mac_sh_ptc1193578352 --filename sky-one-friday-fights-events.json
+            python sky.py --mac mac_sh_ptc825848305 --filename sky-mlb-events.json
+            
             
             # Stage the new changes
             git add sky-*.json
