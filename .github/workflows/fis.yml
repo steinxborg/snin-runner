@@ -57,7 +57,7 @@ jobs:
             git reset --hard origin/$DEFAULT_BRANCH
             
             # Re-run the script to generate fresh data
-            python $SCRIPT_NAME
+            python $SCRIPT_NAME --myst
             
             # Stage the new changes
             git add $OUTPUT_FILE
