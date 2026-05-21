@@ -8,3 +8,4 @@ Faker
 python-dateutil
 rapidfuzz
 httpx[http2]
+m3u8
