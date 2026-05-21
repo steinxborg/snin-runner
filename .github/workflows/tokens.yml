@@ -1,4 +1,4 @@
-name: fis
+name: tokens
 on:
   schedule:
     - cron: "0 */6 * * *"
@@ -7,17 +7,17 @@ on:
 # Use workflow-specific concurrency group to prevent cancellation
 # GitHub cancels waiting scheduled runs if newer ones arrive with same group
 concurrency:
-  group: fis-repo-update  # Make this unique per workflow
+  group: tokens-repo-update  # Make this unique per workflow
   cancel-in-progress: false
 
 jobs:
   fetch_data:
     runs-on: ubuntu-latest
     env:
-      REPO_FOLDER: fis-repo
-      SCRIPT_NAME: fis-ski-tokens.py
-      OUTPUT_FILE: fis-ski-tokens.txt
-      ENRICHED_FILE: fis-enriched.json
+      REPO_FOLDER: tokens-repo
+      SCRIPT_NAME: tokens.py
+      OUTPUT_FILE: tokens.txt
+      ENRICHED_FILE: tokens-enriched.json
     
     steps:
       - uses: actions/checkout@v5
@@ -57,7 +57,7 @@ jobs:
             git reset --hard origin/$DEFAULT_BRANCH
             
             # Re-run the script to generate fresh data
-            python $SCRIPT_NAME --myst
+            python $SCRIPT_NAME
             
             # Stage the new changes
             git add $OUTPUT_FILE
