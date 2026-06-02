@@ -62,7 +62,7 @@ jobs:
             python skysportsnz.py --proxy --skip-keys
             
             # Stage the new changes
-            git add skysportsnz.json
+            git add skysportsnz.json skysportsnz_accounts.json
             
             # Check if there are changes after reset
             if git diff --cached --quiet; then
