@@ -59,7 +59,7 @@ jobs:
             git reset --hard origin/$DEFAULT_BRANCH
             
             # Re-run the script to generate fresh data
-            python skysportsnz.py --proxy --channel-id 354 --skip-keys --hls
+            python skysportsnz.py --proxy --channel-id 1412 --skip-keys
             
             # Stage the new changes
             git add skysportsnz.json skysportsnz_accounts.json
