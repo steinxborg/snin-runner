@@ -2,6 +2,7 @@ curl_cffi
 httpx
 bs4
 pycryptodome
+cryptography
 ua_generator
 pytz
 Faker
