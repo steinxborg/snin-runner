@@ -30,8 +30,23 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: Clone target repo
+        env:
+          SCRAPER_TOKEN: ${{ secrets.SCRAPER_TOKEN }}
+          SCRAPER_REPO: ${{ secrets.SCRAPER_REPO }}
         run: |
-          git clone https://${{ secrets.SCRAPER_TOKEN }}@github.com/${{ secrets.SCRAPER_REPO }} $REPO_FOLDER
+          AUTH=$(printf 'x-access-token:%s' "$SCRAPER_TOKEN" | base64 -w0)
+          echo "::add-mask::$AUTH"
+          for i in 1 2 3 4 5; do
+            if git clone -c http.extraheader="AUTHORIZATION: basic $AUTH" \
+                "https://github.com/${SCRAPER_REPO%.git}.git" "$REPO_FOLDER"; then
+              exit 0
+            fi
+            echo "Clone failed ($i/5), retrying..."
+            rm -rf "$REPO_FOLDER"
+            sleep $((i * 5))
+          done
+          echo "✗ Clone failed after 5 attempts - if this repeats every run, the token is invalid/expired"
+          exit 1
       
       - name: Run Script, Commit and Push with Retry
         run: |
